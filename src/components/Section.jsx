@@ -1,15 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
+import Fade from 'react-reveal/Fade';
+
 
 const Section = ({ title, description, leftBtnText, rightBtnText, backgroundImg }) => {
   return (
       <Wrap bgImage={backgroundImg}>
+         <Fade bottom>
           <ItemText>
                 <h1> {title}</h1>
                 <p>{description}</p>
-          </ItemText>
+              </ItemText>
+              </Fade>
           <BottonArrow>
-              <Bottons>
+              <Fade bottom>
+                  <Bottons>
                   <LeftBotton>
                         {leftBtnText}
                   </LeftBotton>
@@ -19,6 +24,7 @@ const Section = ({ title, description, leftBtnText, rightBtnText, backgroundImg 
                   </RightBotton>
                   }
               </Bottons>
+              </Fade>
           <DownArrow src="/images/down-arrow.svg"/>
           </BottonArrow>
 
@@ -40,7 +46,19 @@ const Wrap = styled.div`
     flex-direction:column;
     justify-content:space-between;
     align-items:center;
-    background-image: ${props => `url("/images/${props.bgImage}")`}
+    background-image: ${props => `url("/images/${props.bgImage}")`};
+
+    /* @media (max-width:1024px){
+       background-size: cover;
+       object-fit:cover;
+       width:100%;
+    height:100vh;   
+    };
+    @media (max-width:600px){
+       background-size: cover;
+       width:100%;
+        height:100vh;   
+    }; */
 `
 const ItemText = styled.div`
     padding: 15vh 0 0 0;
@@ -97,4 +115,5 @@ const DownArrow = styled.img`
     height : 2.5rem;
     animation: animateDown infinite 1.5s;
     overflow-x:hidden;
+    
 `
