@@ -6,7 +6,8 @@ import { useSelector } from 'react-redux';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const cars = useSelector(selectCars) 
+  const cars = useSelector(selectCars)
+  console.log(cars);
 
   return (
     <Container>
@@ -16,9 +17,10 @@ const Header = () => {
      
       <Menu>
         {cars && cars.map((car, index) => (
-          <a key={index} href="#">{car}</a>
+          <a href="#">{car}</a>
         ) )}
-        
+         <a href="#">Solar Roof</a>
+        <a href="#">Solar Panel</a>
       </Menu>
       <MenuRight className='right__menu'>
         <a href="#">Shop</a>
