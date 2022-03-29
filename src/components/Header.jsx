@@ -1,22 +1,24 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import CloseIcon from '@mui/icons-material/Close';
+import { selectCars } from '../features/TheCars/theCars';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const cars = useSelector(selectCars) 
 
   return (
     <Container>
       <a>
         <img src="/images/logo.svg" alt="logo" />
       </a>
+     
       <Menu>
-        <a href="#">Model 3</a>
-        <a href="#">Model Y</a>
-        <a href="#">Model S</a>
-        <a href="#">Model X</a>
-        <a href="#">Solar Roof</a>
-        <a href="#">Solar Panel</a>
+        {cars && cars.map((car, index) => (
+          <a key={index} href="#">{car}</a>
+        ) )}
+        
       </Menu>
       <MenuRight className='right__menu'>
         <a href="#">Shop</a>
